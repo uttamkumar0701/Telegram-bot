@@ -15,11 +15,10 @@ async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     text = update.message.text
     await context.bot.send_message(chat_id=ADMIN_ID,
-        text=f"📨 Message from {user.first_name} (ID: {user.id}):
-{text}")
+        text = f"📨 Message from {user.first_name} (ID: {user.id}):\n\n{message.text}"
 
 if __name__ == '__main__':
-    app = ApplicationBuilder().token("PASTE_YOUR_BOT_TOKEN_HERE").build()
+    app = ApplicationBuilder().token("7381963215:AAF5W1vWsNcoJgWKWpT0Na-kF5eIwpElxhM").build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), message_handler))
     app.run_polling()
